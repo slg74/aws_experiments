@@ -40,7 +40,7 @@ def get_vpc_info():
 
 
 def main():
-    print(get_short_term_credentials())
+    get_short_term_credentials()
     get_vpc_info()
 
 
