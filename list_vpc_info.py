@@ -3,7 +3,7 @@ import csv
 from pathlib import Path
 
 
-def get_short_term_credentials() -> tuple:
+def get_iam_credentials() -> tuple:
 
     path = Path.home() / "Downloads" / "admin_user_pulumi_accessKeys.csv"
 
@@ -63,7 +63,7 @@ def get_subnet_info():
 
 
 def main():
-    get_short_term_credentials()
+    get_iam_credentials()
     get_vpc_info()
     get_subnet_info()
 
