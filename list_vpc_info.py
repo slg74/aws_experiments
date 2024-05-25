@@ -39,9 +39,33 @@ def get_vpc_info():
         print("---")
 
 
+def get_subnet_info():
+    session = boto3.Session(region_name="us-east-2")
+    ec2_client = session.client("ec2")
+
+    # Get all subnets
+    subnets = ec2_client.describe_subnets()["Subnets"]
+
+    # Print subnet information
+    for subnet in subnets:
+        subnet_id = subnet["SubnetId"]
+        vpc_id = subnet["VpcId"]
+        cidr_block = subnet["CidrBlock"]
+        availability_zone = subnet["AvailabilityZone"]
+        state = subnet["State"]
+
+        print(f"Subnet ID: {subnet_id}")
+        print(f"VPC ID: {vpc_id}")
+        print(f"CIDR Block: {cidr_block}")
+        print(f"Availability Zone: {availability_zone}")
+        print(f"State: {state}")
+        print("---")
+
+
 def main():
     get_short_term_credentials()
     get_vpc_info()
+    get_subnet_info()
 
 
 if __name__ == "__main__":
