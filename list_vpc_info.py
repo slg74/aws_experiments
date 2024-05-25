@@ -1,5 +1,7 @@
 import boto3
 import csv
+import os
+
 from pathlib import Path
 
 
@@ -14,6 +16,14 @@ def get_iam_credentials() -> tuple:
             secret_access_key = row[1]
 
     return access_key_id, secret_access_key
+
+
+def set_iam_credentials():
+    session = boto3.Session(region_name="us-east-2")
+    iam_client = session.client("iam")
+    access_key_id, secret_access_key = get_iam_credentials()
+    os.environ["AWS_ACCESS_KEY_ID"] = access_key_id
+    os.environ["AWS_SECRET_ACCESS_KEY"] = secret_access_key
 
 
 def get_vpc_info():
@@ -64,6 +74,7 @@ def get_subnet_info():
 
 def main():
     get_iam_credentials()
+    set_iam_credentials()
     get_vpc_info()
     get_subnet_info()
 
