@@ -19,8 +19,6 @@ def get_iam_credentials() -> tuple:
 
 
 def set_iam_credentials():
-    session = boto3.Session(region_name="us-east-2")
-    iam_client = session.client("iam")
     access_key_id, secret_access_key = get_iam_credentials()
     os.environ["AWS_ACCESS_KEY_ID"] = access_key_id
     os.environ["AWS_SECRET_ACCESS_KEY"] = secret_access_key
