@@ -1,3 +1,9 @@
+Terraform result (running LB in AWS)
+
+![terraform_ecs_genesis_block](genesis_block.png)
+
+
+... 
 
 $ python3 list_vpc_info.py
 
@@ -34,9 +40,6 @@ Process finished with exit code 0
 
 Terraform ECS with LB  
 ---------------------
-
-![terraform_ecs_genesis_block](genesis_block.png)
-
 
 scottghome@scottgs-MBP terraform % terraform show
 # data.aws_availability_zones.available:
